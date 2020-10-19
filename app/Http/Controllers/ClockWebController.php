@@ -16,7 +16,7 @@ class ClockWebController extends Controller
 
     public function showForm()
     {
-        return view('pointWeb.login');
+        return view('login');
     }
 
     public function autenticate(Request $req)
