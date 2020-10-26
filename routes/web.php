@@ -14,6 +14,5 @@ use App\Http\Controllers\ClockWebController;
 |
 */
 
-Route::get('/', [ClockWebController::class, 'index'])->middleware('authClock')->name('home');
-Route::get('/login', [ClockWebController::class, 'showForm'])->name('login');
+Route::get('/', [ClockWebController::class, 'index'])->name('login');
 Route::post('/autenticate', [ClockWebController::class, 'autenticate'])->name('autenticate');

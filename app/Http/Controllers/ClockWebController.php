@@ -11,16 +11,15 @@ class ClockWebController extends Controller
 {
     public function index()
     {
-        return view('pointWeb.clock');
-    }
-
-    public function showForm()
-    {
         return view('login');
     }
 
     public function autenticate(Request $req)
     {
+        $user = User::where('email', $req->username)->first();
 
+        if(Hash::check($req->pass, $user->password)) {
+            // code...
+        }
     }
 }
