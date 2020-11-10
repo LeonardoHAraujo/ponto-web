@@ -16,3 +16,11 @@ use App\Http\Controllers\ClockWebController;
 
 Route::get('/', [ClockWebController::class, 'index'])->name('login');
 Route::post('/autenticate', [ClockWebController::class, 'autenticate'])->name('autenticate');
+
+Route::middleware(['auth'])->group(function() {
+
+    Route::get('/admin', [ClockWebController::class, 'admin'])->name('admin');
+    Route::get('/ponto-web', [ClockWebController::class, 'clock'])->name('clock');
+    Route::get('/logout', [ClockWebController::class, 'logout'])->name('logout');
+
+});

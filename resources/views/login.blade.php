@@ -25,6 +25,7 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/alert.css') }}">
         <!--===============================================================================================-->
     </head>
     <body>
@@ -34,9 +35,15 @@
             <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
                 <form class="login100-form validate-form flex-sb flex-w" method="post" action="{{ route('autenticate') }}">
                     @csrf
-                        <span class="login100-form-title p-b-32">
-                            Ponto Web
-                        </span>
+                    <span class="login100-form-title p-b-32">
+                        Ponto Web
+                    </span>
+
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <span class="txt1 p-b-11">
                             Username

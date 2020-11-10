@@ -14,7 +14,7 @@ class AddColumnAdminUser extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->integer('admin')->after('password')->default(0);
+            $table->integer('isAdmin')->after('password')->default(0);
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnAdminUser extends Migration
     public function down()
     {
         Schema::table('users', function ($table) {
-            $table->dropColumn('admin');
+            $table->dropColumn('isAdmin');
         });
     }
 }

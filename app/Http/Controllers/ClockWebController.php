@@ -14,12 +14,35 @@ class ClockWebController extends Controller
         return view('login');
     }
 
-    public function autenticate(Request $req)
-    {
+    public function clock() {
+        return view('pointWeb.clock');
+    }
+
+    public function admin() {
+        return view('admin.panel-admin');
+    }
+
+    public function autenticate(Request $req) {
+
         $user = User::where('email', $req->username)->first();
 
         if(Hash::check($req->pass, $user->password)) {
-            // code...
+            Auth::attempt(['email' => $req->username, 'password' => $req->pass]);
+
+            if($user->isAdmin === 1) {
+                return redirect()->route('admin');
+            } else {
+                return redirect()->route('clock');
+            }
+        } else {
+
+            return redirect()->route('login')->with('error', 'Email ou senha incorretos.');
+
         }
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
